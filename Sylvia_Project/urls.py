@@ -21,5 +21,5 @@ from Snacks_App import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Home, name='Home'),
-    path('snacks-app', include('Snacks_App.urls')),
+    path('snacks/', include('Snacks_App.urls')),
 ]

@@ -1,4 +1,4 @@
-{% extends 'public/frontend/base.html %}
+{% extends 'public/frontend/base.html' %}
 
 {% load static %}
 
@@ -8,9 +8,9 @@ Service  Page
 
 {% block content %}
 
-<section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
+<section class="home-slider owl-carousel img" style="background-image: url({% static 'public/frontend/images/bg_1.jpg' %});">
 
-  <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
+  <div class="slider-item" style="background-image: url({% static 'public/frontend/images/bg_3.jpg)' %};">
     <div class="overlay"></div>
     <div class="container">
       <div class="row slider-text justify-content-center align-items-center">
@@ -83,7 +83,7 @@ Service  Page
     <div class="row">
       <div class="col-md-3 text-center ftco-animate">
         <div class="menu-wrap">
-          <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-1.jpg);"></a>
+          <a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-1.jpg' %});"></a>
           <div class="text">
             <h3><a href="#">Itallian Pizza</a></h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
@@ -94,7 +94,7 @@ Service  Page
       </div>
       <div class="col-md-3 text-center ftco-animate">
         <div class="menu-wrap">
-          <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-2.jpg);"></a>
+          <a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-2.jpg' %});"></a>
           <div class="text">
             <h3><a href="#">Itallian Pizza</a></h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
@@ -105,7 +105,7 @@ Service  Page
       </div>
       <div class="col-md-3 text-center ftco-animate">
         <div class="menu-wrap">
-          <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-3.jpg);"></a>
+          <a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-3.jpg' %});"></a>
           <div class="text">
             <h3><a href="#">Itallian Pizza</a></h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
@@ -116,7 +116,7 @@ Service  Page
       </div>
       <div class="col-md-3 text-center ftco-animate">
         <div class="menu-wrap">
-          <a href="#" class="menu-img img mb-4" style="background-image: url(images/pizza-4.jpg);"></a>
+          <a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-4.jpg' %});"></a>
           <div class="text">
             <h3><a href="#">Itallian Pizza</a></h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
