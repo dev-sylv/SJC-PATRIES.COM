@@ -11,4 +11,9 @@ urlpatterns = [
     path('contact-us/', views.Contact, name='Contact'),
     path('menu-page', views.Menu, name='Menu'),
     path('services/', views.Services, name='Services'),
+    path('Login/', views.Login, name='Login'),
+    path('Signup/', views.Signup, name='Signup'),
+
+
+
 ]

@@ -22,6 +22,14 @@ def Menu(request):
 def Services(request):
     return render(request, 'public/frontend/services.html')
 
+def Login(request):
+    return render(request, 'public/frontend/Login.html')
+
+def Signup(request):
+    return render(request, 'public/frontend/Signup.html')
+
+
+
 
 
 
