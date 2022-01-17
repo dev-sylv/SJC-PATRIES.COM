@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS  = [STATIC_DIR]
@@ -125,3 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+settings.AUTH_USER_MODEL
+
+AUTH_USER_MODEL= 'Snacks_App.User'

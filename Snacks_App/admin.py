@@ -1,53 +1,54 @@
 from django.contrib import admin
 from Snacks_App.models import *
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import AbstractUser
+
 
 # Register your models here.
-@admin.register(User)
-class UserAdmin(model.ModelAdmin):
-    prepopulated_fields = {'slug': ('Username',)}
+admin.site.register(User, UserAdmin)
 
 @admin.register(Products)
-class ProductsAdmin(model.ModelAdmin):
+class ProductsAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('product_name',)}
 
 @admin.register(Category)
-class CategoryAdmin(model.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('Category_name',)}
 
-@admin.site.register(ProductCategory)
+admin.site.register(ProductCategory)
 
 @admin.register(Menu)
-class MenuAdmin(model.ModelAdmin):
-    prepopulated_fields = {'slug': ('product_name',)}
+class MenuAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('menu_status',)}
 
 @admin.register(Orders)
-class OrdersAdmin(model.ModelAdmin):
-    prepopulated_fields = {'slug': ('product_name',)}
+class OrdersAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('quantity',)}
 
-@admin.site.register(Reviews)
+admin.site.register(Reviews)
 
-@admin.site.register(SylviaPhotos)
+admin.site.register(SylviaPhotos)
 
 @admin.register(Cart)
-class CartAdmin(model.ModelAdmin):
-    prepopulated_fields = {'slug': ('product_name',)}
+class CartAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('quantity',)}
 
 @admin.register(Blog)
-class BlogAdmin(model.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('blog_name',)}
 
 @admin.register(HomeSlides)
-class HomeSlidesAdmin(model.ModelAdmin):
+class HomeSlidesAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('product_name',)}
 
 @admin.register(Team)
-class TeamAdmin(model.ModelAdmin):
+class TeamAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('team_name',)}
 
-@admin.site.register(Payment)
+admin.site.register(Payment)
 
 @admin.register(SiteInfo)
-class SiteInfoAdmin(model.ModelAdmin):
+class SiteInfoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('site_name',)}
 
 

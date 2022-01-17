@@ -1,15 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import AbstractUser
 
-class User(AbstractUser):
+
+# class get_user_model(models.Model):
+#     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+    
+# Create your models here.
+
+class MyUser(User):
     profile_image = models.ImageField(blank=True, null=True, upload_to='uploads/')
-    # phone_number = models.Field(max_length=15)
+    phone_number = models.Field(max_length=15)
     address = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.username
+    # def __str__(self):
+    #     return self.Username - this is the string representation.
 
     def get_profile_image(self):
         if self.profile_image:
             return self.profile_image.url
+
 
 class Products(models.Model):
     product_name = models.CharField(max_length=50)
@@ -22,9 +34,6 @@ class Products(models.Model):
 
     def __str__(self):
         return self.product_name
-
-    class Meta():
-        verbose_name_plural = 'Products'
 
     def get_product_image(self):
         if self.product_image:
@@ -109,9 +118,6 @@ class Reviews(models.Model):
     remarks = models.TextField()
     date_recorded = models.DateTimeField(auto_now_add=True)
 
-    class Meta():
-        verbose_name_plural = 'Reviews'
-
 class SylviaPhotos(models.Model):
     image1 = models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image1')
     image2 = models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image2')
@@ -160,9 +166,6 @@ class Blog(models.Model):
     slug = models.SlugField(unique=True)
     blog_description = models.TextField()
 
-    class Meta():
-        verbose_name_plural = 'Blog'
-
 class HomeSlides(models.Model):
     product_adjective = models.CharField(max_length=20)
     product_name =  models.ForeignKey(Products, on_delete= models.CASCADE)
@@ -204,5 +207,3 @@ class SiteInfo(models.Model):
 
     def __str__(self):
         return self.site_name
-
-
