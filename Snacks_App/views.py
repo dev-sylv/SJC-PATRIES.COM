@@ -1,14 +1,32 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
+from Snacks_App.models import *
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def Home(request):
-    return render(request, 'public/frontend/index.html')
+    news = Blog.objects.order_by('-created')[:3]
+
+    context = {
+        'news' : news,
+    }
+    return render(request, 'public/frontend/index.html', context)
 
 def About(request):
     return render(request, 'public/frontend/about.html')
 
-def Blog(request):
-    return render(request, 'public/frontend/blog.html')
+def blog(request):
+    most_recent = Blog.objects.order_by('created')[:2]
+    blog_post = Blog.objects.order_by('-created')
+    pagination = Paginator(blog_post, 6)
+    page_number = request.GET.get('page')
+    page_object= pagination.get_page(page_number)
+    context = {
+        'page_object': blog_post,
+        'most_recent': most_recent,
+    }
+    context['page_object'] = page_object
+    return render(request, 'public/frontend/blog.html', context)
 
 def Blog_single(request):
     return render(request, 'public/frontend/blog-single.html')

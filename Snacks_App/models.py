@@ -1,10 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
+from django.core.exceptions import ObjectDoesNotExist
 
-class User(AbstractUser):
+# from django.contrib.auth.models import AbstractUser
+# from django.conf import settings
+
+class OrderProfile(models.Model):
+    First_name = models.CharField(max_length=30)
+    First_name = models.CharField(max_length=30)
+    User_name = models.CharField(max_length=30)
+    slug = models.SlugField(unique=True)
+    email = models.EmailField()
     profile_image = models.ImageField(blank=True, null=True, upload_to='uploads/')
-    # phone_number = models.Field(max_length=15)
+    phone_number = models.CharField(max_length=15)
     address = models.TextField(max_length=500)
 
     def get_profile_image(self):
@@ -17,14 +26,14 @@ class Products(models.Model):
     product_description = models.TextField()
     product_price = models.FloatField()
     product_image = models.ImageField(blank=True, null=True, upload_to='uploads/')
-    user_id = models.ForeignKey(User, on_delete= models.CASCADE)
+    
     # category_id = models.ForeignKey(Category, on_delete= models.CASCADE) 
 
     def __str__(self):
         return self.product_name
 
     class Meta():
-        verbose_name_plural = 'Products'
+        verbose_name_plural = 'Snacks'
 
     def get_product_image(self):
         if self.product_image:
@@ -64,7 +73,7 @@ class Menu(models.Model):
     # product_description =  models.ForeignKey(Products, on_delete= models.CASCADE)
     # product_price = models.ForeignKey(Products, on_delete= models.CASCADE)
     # product_image =  models.ForeignKey(Products, on_delete= models.CASCADE)
-    menu_status = models.CharField(max_length=30, verbose_name= 'Menu Status', default = CHOOSE)
+    menu_status = models.CharField(max_length=30, verbose_name= 'Menu Status', choices=menu_status, default = CHOOSE)
 
     def __str__(self):
         return self.product_name
@@ -141,7 +150,7 @@ class Cart(models.Model):
     # product_price = models.ForeignKey(Products, on_delete= models.CASCADE)
     # product_image =  models.ForeignKey(Products, on_delete= models.CASCADE)
     quantity = models.TextField()
-    user_id = models.ForeignKey(User, on_delete= models.CASCADE)
+    # user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
     # user_Username = models.ForeignKey(User, on_delete= models.CASCADE)
     # user_email = models.ForeignKey(User, on_delete= models.CASCADE)
     # user_phonenumber = models.ForeignKey(User, on_delete= models.CASCADE)
@@ -154,14 +163,37 @@ class Cart(models.Model):
             return self.product_image.url
 
 class Blog(models.Model):
+    FEATURE = 'Feature'
+    No_FEATURE ='No Feature'
+    CHOOSE = ''
+    APPEAR_HOME_FIELD=[
+        (FEATURE, 'Appear on home'),
+        (No_FEATURE, "Don't show on home"),
+        (CHOOSE, 'Please choose'),
+    ]
     blog_image = models.ImageField(blank=True, null=True, upload_to='uploads/')
-    blog_date = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
+    appear_home = models.CharField(max_length=50, choices=APPEAR_HOME_FIELD, default=CHOOSE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog_name = models.CharField(max_length=30)
     slug = models.SlugField(unique=True)
     blog_description = models.TextField()
+    
 
     class Meta():
         verbose_name_plural = 'Blog'
+
+    def get_blog_image(self):
+        if self.blog_image:
+            return self.blog_image.url
+
+    def get_absolute_url(self):
+        return reverse('Snacks_App:Blog_single', kwargs={
+            'slug': self.slug,
+        })
+
+    def __str__(self):
+        return self.blog_name
 
 class HomeSlides(models.Model):
     product_adjective = models.CharField(max_length=20)

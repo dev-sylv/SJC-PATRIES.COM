@@ -129,6 +129,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-settings.AUTH_USER_MODEL
 
-AUTH_USER_MODEL= 'Snacks_App.User'
+# AUTH_USER_MODEL= 'Snacks_App.CustomUser'
