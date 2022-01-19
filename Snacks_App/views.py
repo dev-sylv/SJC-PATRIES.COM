@@ -6,7 +6,6 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def Home(request):
     news = Blog.objects.order_by('-created')[:3]
-
     context = {
         'news' : news,
     }
@@ -45,6 +44,9 @@ def Login(request):
 
 def Signup(request):
     return render(request, 'public/frontend/Signup.html')
+
+def Order(request):
+    return render(request, 'public/frontend/order.html')
 
 
 

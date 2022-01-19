@@ -62,7 +62,7 @@ class ProductCategory(models.Model):
 class Menu(models.Model):
     AVAILABLE = 'available'
     UNAVAILABLE = 'unavailable'
-    CHOOSE = 'please choose'
+    CHOOSE = ''
     menu_status = [
         (AVAILABLE, 'available'),
         (UNAVAILABLE, 'unavailable'),

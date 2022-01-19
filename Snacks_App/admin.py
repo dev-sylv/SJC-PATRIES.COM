@@ -42,7 +42,7 @@ class CartAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('blog_name',)}
     def get_blog_image(self, obj):
-        return format_html('<img src="{}" width="100" />'.format(obj.blog_image.url))
+        return format_html('<img src="{}" width="100"/>'.format(obj.blog_image.url))
     get_blog_image.short_description = 'Blog'
 
     list_display = [

@@ -13,6 +13,8 @@ urlpatterns = [
     path('services/', views.Services, name='Services'),
     path('Login/', views.Login, name='Login'),
     path('Signup/', views.Signup, name='Signup'),
+    path('order/', views.Order, name='Order'),
+
 
 
 
