@@ -34,7 +34,8 @@ def Contact(request):
     return render(request, 'public/frontend/contact.html')
 
 def Menu(request):
-    return render(request, 'public/frontend/menu.html')
+    snack = Snacks.objects.all()
+    return render(request, 'public/frontend/menu.html', {'snack': snack})
 
 def Services(request):
     return render(request, 'public/frontend/services.html')

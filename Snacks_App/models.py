@@ -68,15 +68,15 @@ class Menu(models.Model):
         (UNAVAILABLE, 'unavailable'),
         (CHOOSE, 'please choose'),
     ]
-    # product_name = models.ForeignKey(Products, on_delete= models.CASCADE)
+    snacks_name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
-    # product_description =  models.ForeignKey(Products, on_delete= models.CASCADE)
-    # product_price = models.ForeignKey(Products, on_delete= models.CASCADE)
-    # product_image =  models.ForeignKey(Products, on_delete= models.CASCADE)
+    snacks_description =  models.TextField()
+    snacks_price = models.CharField(max_length=12)
+    snacks_image =  models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image1')
     menu_status = models.CharField(max_length=30, verbose_name= 'Menu Status', choices=menu_status, default = CHOOSE)
 
     def __str__(self):
-        return self.product_name
+        return self.snacks_name
 
     def get_product_image(self):
         if self.product_image:
@@ -143,17 +143,20 @@ class SylviaPhotos(models.Model):
         if self.image4:
             return self.product_image4.url
 
+    class Meta():
+        verbose_name_plural = 'Sylvia-Photos'
+
 class Cart(models.Model):
-    # product_name  = models.ForeignKey(Products, on_delete= models.CASCADE)
+#     product_name  = models.CharField(max_length=30)
     slug = models.SlugField(unique=True)
-    # product_description =  models.ForeignKey(Products, on_delete= models.CASCADE)
-    # product_price = models.ForeignKey(Products, on_delete= models.CASCADE)
-    # product_image =  models.ForeignKey(Products, on_delete= models.CASCADE)
+#     product_description =  models.TextField('Yummy')
+#     product_price = models.CharField(max_length=15)
+#     product_image =  models.ImageField(blank=True, null=True, upload_to='uploads/')
     quantity = models.TextField()
-    # user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
-    # user_Username = models.ForeignKey(User, on_delete= models.CASCADE)
-    # user_email = models.ForeignKey(User, on_delete= models.CASCADE)
-    # user_phonenumber = models.ForeignKey(User, on_delete= models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete= models.CASCADE)
+    # order_Username = models.ForeignKey(OrderProfile, on_delete= models.CASCADE)
+    # order_email = models.ForeignKey(OrderProfile, on_delete= models.CASCADE)
+    # order_phonenumber = models.ForeignKey(OrderProfile, on_delete= models.CASCADE)
 
     def __str__(self):
         return self.product_name
@@ -208,6 +211,9 @@ class HomeSlides(models.Model):
     def get_imageA(self):
         if self.imageA:
             return self.imageA.url
+
+    class Meta():
+        verbose_name_plural: 'HomeSlides'
 
 class Team(models.Model):
     image1 =  models.ImageField(blank=True, null=True, upload_to='uploads/')

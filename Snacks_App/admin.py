@@ -24,7 +24,7 @@ admin.site.register(ProductCategory)
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('menu_status',)}
+    prepopulated_fields = {'slug': ('snacks_name',)}
 
 @admin.register(Orders)
 class OrdersAdmin(admin.ModelAdmin):
