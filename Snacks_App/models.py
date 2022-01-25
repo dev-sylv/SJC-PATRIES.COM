@@ -73,14 +73,15 @@ class Menu(models.Model):
     snacks_description =  models.TextField()
     snacks_price = models.CharField(max_length=12)
     snacks_image =  models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image1')
+    created = models.DateTimeField(auto_now_add=True)
     menu_status = models.CharField(max_length=30, verbose_name= 'Menu Status', choices=menu_status, default = CHOOSE)
 
     def __str__(self):
         return self.snacks_name
 
-    def get_product_image(self):
-        if self.product_image:
-            return self.product_image.url
+    def get_snacks_image(self):
+        if self.snacks_image:
+            return self.snacks_image.url
 
 class Orders(models.Model):
     product_id = models.ForeignKey(Products, on_delete= models.CASCADE)
@@ -126,6 +127,7 @@ class SylviaPhotos(models.Model):
     image2 = models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image2')
     image3 = models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image3')
     image4 = models.ImageField(blank=True, null=True, upload_to='uploads/', verbose_name = 'sylvia_image4')
+    created = models.DateTimeField(auto_now_add=True)
 
     def get_image1(self):
         if self.image1:
@@ -204,6 +206,7 @@ class HomeSlides(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     imageA =  models.ImageField(blank=True, null=True, upload_to='uploads/')
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.product_name
@@ -225,6 +228,10 @@ class Team(models.Model):
     def __str__(self):
         return self.team_name
 
+    def get_image1(self):
+        if self.image1:
+            return self.image1.url
+
 class Payment(models.Model):
     order_id = models.ForeignKey(Orders, on_delete= models.CASCADE)
     amount = models.FloatField()
@@ -243,4 +250,14 @@ class SiteInfo(models.Model):
     def __str__(self):
         return self.site_name
 
+class ContactMe(models.Model):
+    name =  models.CharField(max_length=100)
+    email = models.EmailField()
+    # phone = models.CharField(max_length=50)
+    subject = models.CharField(max_length=2)
+    # menu_id = models.ForeignKey(Menu, on_delete= models.CASCADE)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
 

@@ -66,4 +66,4 @@ admin.site.register(Payment)
 class SiteInfoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('site_name',)}
 
-
+admin.site.register(ContactMe)

@@ -87,54 +87,25 @@ About Us Page
 		</div>
 	  </div>
 	  <div class="row">
+		{% if team %}
+		{% for t in team %}
 		  <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
+
 			  <div class="staff">
-					<div class="img mb-4" style="background-image: url({% static 'public/frontend/images/person_1.jpg' %});"></div>
-					<div class="info text-center">
-						<h3><a href="teacher-single.html">Tom Smith</a></h3>
-						<span class="position">Hair Specialist</span>
-						<div class="text">
-						  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					  </div>
-					</div>
-			  </div>
+				<div class="img mb-4" style="background-image: url({{ t.get_image1 }});"></div>
+				<div class="info text-center">
+					<h3><a href="teacher-single.html">{{ t.team_name }}</a></h3>
+					<span class="position">{{ t.team_bio }}</span>
+					<div class="text">
+					  <p>{{ t.team_description }}</p>
+				  </div>
+				</div>
 		  </div>
-		  <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-			  <div class="staff">
-					<div class="img mb-4" style="background-image: url({% static 'public/frontend/images/person_2.jpg' %});"></div>
-					<div class="info text-center">
-						<h3><a href="teacher-single.html">Mark Wilson</a></h3>
-						<span class="position">Beard Specialist</span>
-						<div class="text">
-						  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					  </div>
-					</div>
-			  </div>
+
 		  </div>
-		  <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-			  <div class="staff">
-					<div class="img mb-4" style="background-image: url({% static 'public/frontend/images/person_3.jpg' %});"></div>
-					<div class="info text-center">
-						<h3><a href="teacher-single.html">Patrick Jacobson</a></h3>
-						<span class="position">Hair Stylist</span>
-						<div class="text">
-						  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					  </div>
-					</div>
-			  </div>
-		  </div>
-		  <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-			  <div class="staff">
-					<div class="img mb-4" style="background-image: url({% static 'public/frontend/images/person_4.jpg' %});"></div>
-					<div class="info text-center">
-						<h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-						<span class="position">Beard Specialist</span>
-						<div class="text">
-						  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					  </div>
-					</div>
-			  </div>
-		  </div>
+		  {% endfor %}
+		  {% endif %}
+
 	  </div>
 	</div>
   </section>
@@ -145,44 +116,8 @@ About Us Page
 	<div class="container">
 	  <div class="row justify-content-center">
 		  <div class="col-md-10">
-			  <div class="row">
-				<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-				  <div class="block-18 text-center">
-					<div class="text">
-						<div class="icon"><span class="flaticon-pizza-1"></span></div>
-						<strong class="number" data-number="100">0</strong>
-						<span>Pizza Branches</span>
-					</div>
-				  </div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-				  <div class="block-18 text-center">
-					<div class="text">
-						<div class="icon"><span class="flaticon-medal"></span></div>
-						<strong class="number" data-number="85">0</strong>
-						<span>Number of Awards</span>
-					</div>
-				  </div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-				  <div class="block-18 text-center">
-					<div class="text">
-						<div class="icon"><span class="flaticon-laugh"></span></div>
-						<strong class="number" data-number="10567">0</strong>
-						<span>Happy Customer</span>
-					</div>
-				  </div>
-				</div>
-				<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-				  <div class="block-18 text-center">
-					<div class="text">
-						<div class="icon"><span class="flaticon-chef"></span></div>
-						<strong class="number" data-number="900">0</strong>
-						<span>Staff</span>
-					</div>
-				  </div>
-				</div>
-			  </div>
+			{% include 'public/frontend/admin-reward.html' %}
+
 			</div>
 	  </div>
 	</div>
