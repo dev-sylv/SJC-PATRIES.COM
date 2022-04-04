@@ -1,0 +1,44 @@
+{% load static %}
+<section class="ftco-appointment">
+    <div class="overlay"></div>
+<div class="container-wrap">
+    <div class="row no-gutters d-md-flex align-items-center">
+        <div class="col-md-6 d-flex align-self-stretch">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-6 appointment ftco-animate">
+            <h3 class="mb-3">Drop A Message</h3>
+            <form action="#" method="POST" class="appointment-form">
+
+                <div class="d-md-flex">
+                    {% if messages %}
+                    {% for m in messages %}
+                    <div class="alert alert-success"> {{ m }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Username">
+                    </div>
+                </div>
+                <div class="d-md-flex">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="d-md-flex">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phoneNo" placeholder="Phone Number">
+                    </div>
+                </div>
+                <div class="form-group">
+          <textarea name="" id="" cols="30" rows="3" class="form-control" name="message" placeholder="Message"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Send" class="btn btn-primary py-3 px-4">
+        </div>
+        {% csrf_token %}
+            </form>
+        </div>    			
+    </div>
+</div>
+</section>

@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from django.conf import settings
+from Sylvia_Project import secret
+
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,6 +93,23 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+    messages.WARNING: 'alert-warning',
+    messages.INFO: 'alert-info',
+
+
+}
+
 
 
 # Password validation

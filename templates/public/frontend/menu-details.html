@@ -1,0 +1,68 @@
+<!-- &#8358 -->
+{% extends 'public/frontend/base.html' %}
+{% load static %}
+
+{% block tittle %}
+{{ details.snacks_name }}
+{% endblock %}
+
+{% block content %}
+
+<section class="home-slider owl-carousel img" style="background-image: url({% static 'public/frontend/images/bg_1.jpg' %});">
+
+	<div class="slider-item" style="background-image: url({% static 'public/frontend/images/bg_3.jpg' %});">
+		<div class="overlay"></div>
+	  <div class="container">
+		<div class="row slider-text justify-content-center align-items-center">
+
+		  <div class="col-md-7 col-sm-12 text-center ftco-animate">
+			  <h1 class="mb-3 mt-5 bread">Our Menu-details</h1>
+			  <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>Menu-details</span></p>
+		  </div>
+
+		</div>
+	  </div>
+	</div>
+  </section>
+
+
+   {% if details %}
+
+   <div class="site-section">
+    <div class="container">
+      <div class="row mb-5 justify-content-center"  data-aos="fade-up" >
+        <div class="col-md-7">
+          <div class="site-section-title text-center">
+            <h2>ABOUT OUR SNACKS </h2>
+            <p> Be assured of the delicious and yummy taste in our snacks. LET A TRIAL CONVINCE YOU TODAY!!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-8 col-lg-8 offset-md-2 text-center offset-lg-2 mb-5 mb-lg-5"  data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member">
+
+              <img src="{{ details.get_snacks_image }}" alt="Image" class="img-fluid rounded mb-4">
+
+              <div class="text">
+
+                <h2 class="mb-2 font-weight-light text-black h4">{{ details.snacks_name }}</h2>
+                <span class="d-block mb-3 text-white-opacity-05">{{ details.snacks_price}}</span>
+                <p>{{ details.snacks_description }}</p>
+                <p>
+                  <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </div>
+
+    {% endif %}
+
+    
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'public/frontend/base.html' %}
+
+{% load static %}
+
+{% block tittle %}
+Register Page
+{% endblock %}
+
+{% block content %}
+<section class="home-slider owl-carousel img" style="background-image: url({% static 'public/frontend/images/bg_1.jpg' %});">
+
+	<div class="slider-item" style="background-image: url({% static 'public/frontend/images/bg_3.jpg' %});">
+	  <div class="overlay"></div>
+	  <div class="container">
+		<div class="row slider-text justify-content-center align-items-center">
+  
+		  <div class="col-md-7 col-sm-12 text-center ftco-animate">
+			<h1 class="mb-3 mt-5 bread">Register</h1>
+			<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>Register</span></p>
+		  </div>
+  
+		</div>
+	  </div>
+	</div>
+  </section>
+  
+
+  <section class="ftco-intro">
+	  <div class="container-wrap">
+		  <div class="wrap d-md-flex">
+			  <div class="info">
+				  <div class="row no-gutters">
+					  <div class="col-md-4 d-flex ftco-animate">
+						  <div class="icon"><span class="icon-phone"></span></div>
+						  <div class="text">
+							  <h3>+234 90 611 80 473</h3>
+							  <p>Adimike chimnecherem Sylvia</p>
+						  </div>
+					  </div>
+					  <div class="col-md-4 d-flex ftco-animate">
+						  <div class="icon"><span class="icon-my_location"></span></div>
+						  <div class="text">
+							  <h3>Prince Fadina Street</h3>
+							  <p>Olodi Apapa, Lagos</p>
+						  </div>
+					  </div>
+					  <div class="col-md-4 d-flex ftco-animate">
+						  <div class="icon"><span class="icon-clock-o"></span></div>
+						  <div class="text">
+							  <h3>Open Monday-Sunday</h3>
+							  <p>7:00am - 9:00pm</p>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+			  <div class="social d-md-flex pl-md-5 p-4 align-items-center">
+		  <ul class="social-icon">
+			<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			<li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
+		  </ul>
+			  </div>
+		  </div>
+	  </div>
+  </section>
+
+  
+  <div class="site-section">
+    <div class="container">
+		<h3 class="text-center">SIGN UP</h3>
+      <div class="row">
+     
+        <div class="col-md-12 col-lg-8 mt-3">
+        
+          
+          <form action="#" method="POST" class="p-5 border" style="background-i;">
+
+			{% if messages %}
+			{% for sent in messages %}
+			<div class="alert alert-success">{{ sent }}</div>
+			{% endfor %}
+			{% endif %} 
+
+           <!-- *************for hidden fields  -->
+			{% for fields in sylvia.hidden_fields %}
+			{% if fields.errors %}
+			{% for errors in fields.errors %}
+			<div class="alert alert-danger">{{ errors }}</div>
+			{% endfor %}
+			{% endif %}
+			
+			{% endfor %}
+		
+ <!-- ************for visible fields --> 
+			{% for fields in sylvia.visible_fields %}
+			{% if fields.errors %}
+			{% for errors in fields.errors %}
+			<div class="alert alert-danger">{{ errors }}</div>
+			{% endfor %}
+			{% endif %}
+			<div class="row form-group">
+				<div class="col-md-12 mb-3 mb-md-0">
+			       {{ field.label_tags }}
+				   {{ field }}
+			    </div>
+			</div>
+			{% endfor %} 
+
+			<div class="row form-group">
+				<div class="col-md-12 mb-3 mb-md-0 ">
+				   {{ sylvia }}
+			    </div>
+			</div>
+             
+            <div class="row form-group">
+              <div class="col-md-12">
+                <input type="submit" value="Register" class="btn btn-primary  py-2 px-4 rounded-0">
+              </div>
+            </div>
+          {% csrf_token %}
+
+		  <p>
+			<small>Already have an account? login <b><a href="{% url 'Snacks_App:Login' %}">here</a></b></small>
+		  </p>
+
+          </form>
+		  
+        </div>
+
+        <div class="col-lg-4">
+          <div class="p-4 mb-3 bg-">
+            <h3 class="h6 text-black mb-3 text-uppercase">Contact Info</h3>
+            <p class="mb-0 font-weight-bold">Address</p>
+            <p class="mb-4">45 Prince Fadina Street, Olodi-Apapa, Lagos, Nigeria.</p>
+
+            <p class="mb-0 font-weight-bold">Phone</p>
+            <p class="mb-4">+234 906 1180 473</p>
+
+            <p class="mb-0 font-weight-bold">Email Address</p>
+            <p class="mb-0"><a href="#">nicsylvia15f@gmail.com</a></p>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  </div>
+  
+
+{% endblock %}

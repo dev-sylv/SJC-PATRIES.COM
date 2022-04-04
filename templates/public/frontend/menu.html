@@ -1,7 +1,6 @@
 {% extends 'public/frontend/base.html' %}
-
 {% load static %}
-
+{% load sidebar_tag %}
 {% block tittle %}
 Menu Page
 {% endblock %}
@@ -17,7 +16,7 @@ Menu Page
 
 		  <div class="col-md-7 col-sm-12 text-center ftco-animate">
 			  <h1 class="mb-3 mt-5 bread">Our Menu</h1>
-			  <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Menu</span></p>
+			  <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>Menu</span></p>
 		  </div>
 
 		</div>
@@ -30,31 +29,40 @@ Menu Page
 		  <div class="row justify-content-center mb-5 pb-3">
 		<div class="col-md-7 heading-section ftco-animate text-center">
 		  <h2 class="mb-4">Our Menu</h2>
-		  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+		  <p>
+			  Treat yourself and your loved ones everytime. Our Snacks are really affordable and nice. Soft and yummy guaranteed😋
+		  </p>
 		</div>
 	  </div>
 	  </div>
 	  <div class="container-wrap">
 		  <div class="row no-gutters d-flex">
-			 
+			  <!-- 1st line of snacks column starts here -->
 			{% if snack %}
 			{% for s in snack %}
 			<div class="col-lg-4 d-flex ftco-animate">
 				<div class="services-wrap d-flex">
-					<a href="#" class="img" style="background-image: url({{ s.get_snacks_image}});"></a>
+					<a href="{{ s.get_absolute_url }}" class="img" style="background-image: url({{ s.get_snacks_image}});"></a>
 					<div class="text p-4">
-						<h3>{{s.snacks_name }}</h3>
+						<h3><a href="{{ s.get_absolute_url }}">{{s.snacks_name }}</a></h3>
 						<p>{{ s.snacks_description }}</p>
 						<p class="price"><span>{{ s.snacks_price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
 					</div>
 				</div>
 			</div>
+			{% endfor %}
+			{% endif %}
 
+<!-- 1st line of snacks column ends here -->
+
+ <!-- 2nd line of snacks column starts here -->
+            {% if snacky %}
+			{% for s in snacky %}
 			<div class="col-lg-4 d-flex ftco-animate">
 				<div class="services-wrap d-flex">
-					<a href="#" class="img order-lg-last" style="background-image: url({{ s.get_snacks_image}});"></a>
+					<a href="{{ s.get_absolute_url }}" class="img order-lg-last" style="background-image: url({{ s.get_snacks_image}});"></a>
 					<div class="text p-4">
-						<h3>{{s.snacks_name }}</h3>
+						<h3> <a href="{{ s.get_absolute_url }}">{{s.snacks_name }}</a></h3>
 						<p>{{ s.snacks_description }}</p>
 						<p class="price"><span>{{ s.snacks_price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
 					</div>
@@ -65,27 +73,31 @@ Menu Page
 		  </div>
 	  </div>
 
+	   <!-- 2nd line of snacks column ends here -->
+
 	  <div class="container">
 		  <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
 		<div class="col-md-7 heading-section text-center ftco-animate">
 		  <h2 class="mb-4">Our Menu Pricing</h2>
 		  <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-		  <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+		  <p class="mt-5"> 
+			  Our Snacks are always ready in affordable prices. Tasty and Crunchy. Get a pack of snacks at nice prices😙
+		  </p>
 		</div>
 	  </div>
 	  <div class="row">
 		  <div class="col-md-6">
-			  {% if snack %}
-			  {% for s in snack %}
+			  {% if pricea %}
+			  {% for s in pricea %}
 			  <div class="pricing-entry d-flex ftco-animate">
-				<div class="img" style="background-image: url({{ s.get_snacks_image}});"></div>
+				<div class="img" style="background-image: url({{ s.get_image}});"></div>
 				<div class="desc pl-3">
 					<div class="d-flex text align-items-center">
-						<h3><span>{{s.snacks_name}}</span></h3>
-						<span class="price">{{ s.snacks_price }}</span>
+						<h3><span>{{s.name}}</span></h3>
+						<span class="price">{{ s.price }}</span>
 					</div>
 					<div class="d-block">
-						<p>{{ s.snacks_description }}</p>
+						<p>{{ s.description }}</p>
 					</div>
 				</div>
 			</div>
@@ -96,239 +108,30 @@ Menu Page
 		  </div>
 
 		  <div class="col-md-6">
-			  <div class="pricing-entry d-flex ftco-animate">
-				  <div class="img" style="background-image: url({% static 'public/frontend/images/pizza-5.jpg' %});"></div>
-				  <div class="desc pl-3">
-					  <div class="d-flex text align-items-center">
-						  <h3><span>Hawaiian Special</span></h3>
-						  <span class="price">$49.91</span>
-					  </div>
-					  <div class="d-block">
-						  <p>A small river named Duden flows by their place and supplies</p>
-					  </div>
-				  </div>
-			  </div>
-			  <div class="pricing-entry d-flex ftco-animate">
-				  <div class="img" style="background-image: url({% static 'public/frontend/images/pizza-6.jpg' %});"></div>
-				  <div class="desc pl-3">
-					  <div class="d-flex text align-items-center">
-						  <h3><span>Ultimate Overload</span></h3>
-						  <span class="price">$20.00</span>
-					  </div>
-					  <div class="d-block">
-						  <p>A small river named Duden flows by their place and supplies</p>
-					  </div>
-				  </div>
-			  </div>
-			  <div class="pricing-entry d-flex ftco-animate">
-				  <div class="img" style="background-image: url({% static 'public/frontend/images/pizza-7.jpg' %});"></div>
-				  <div class="desc pl-3">
-					  <div class="d-flex text align-items-center">
-						  <h3><span>Bacon Pizza</span></h3>
-						  <span class="price">$20.00</span>
-					  </div>
-					  <div class="d-block">
-						  <p>A small river named Duden flows by their place and supplies</p>
-					  </div>
-				  </div>
-			  </div>
-			  <div class="pricing-entry d-flex ftco-animate">
-				  <div class="img" style="background-image: url({% static 'public/frontend/images/pizza-8.jpg' %});"></div>
-				  <div class="desc pl-3">
-					  <div class="d-flex text align-items-center">
-						  <h3><span>Ham &amp; Pineapple</span></h3>
-						  <span class="price">$20.00</span>
-					  </div>
-					  <div class="d-block">
-						  <p>A small river named Duden flows by their place and supplies</p>
-					  </div>
-				  </div>
-			  </div>
-		  </div>
-	  </div>
-	  </div>
-  </section>
-
-  <section class="ftco-menu">
-	  <div class="container-fluid">
-		  <div class="row d-md-flex">
-			  <div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url({% static 'public/frontend/images/about.jpg' %});">
-			  </div>
-			  <div class="col-lg-8 ftco-animate p-md-5">
-				  <div class="row">
-				<div class="col-md-12 nav-link-wrap mb-5">
-				  <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Pizza</a>
-
-					<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
-
-					<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Burgers</a>
-
-					<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Pasta</a>
-				  </div>
+			 {% if priceb %}
+			 {% for b in priceb %}
+			 <div class="pricing-entry d-flex ftco-animate">
+				<div class="img" style="background-image: url({{ b.get_imageC }});"></div>
+				<div class="desc pl-3">
+					<div class="d-flex text align-items-center">
+						<h3><span>{{ b.name}}</span></h3>
+						<span class="price">{{ b.price }}</span>
+					</div>
+					<div class="d-block">
+						<p>{{ b.description }}</p>
+					</div>
 				</div>
-				<div class="col-md-12 d-flex align-items-center">
-				  
-				  <div class="tab-content ftco-animate" id="v-pills-tabContent">
-
-					<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-						<div class="row">
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-1.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-2.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pizza-3.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-					  <div class="row">
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/drink-1.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Lemonade Juice</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/drink-2.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Pineapple Juice</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/drink-3.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Soda Drinks</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-					  <div class="row">
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/burger-1.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/burger-2.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/burger-3.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-					  <div class="row">
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pasta-1.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pasta-2.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 text-center">
-								<div class="menu-wrap">
-									<a href="#" class="menu-img img mb-4" style="background-image: url({% static 'public/frontend/images/pasta-3.jpg' %});"></a>
-									<div class="text">
-										<h3><a href="#">Itallian Pizza</a></h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-										<p class="price"><span>$2.90</span></p>
-										<p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				  </div>
-				</div>
-			  </div>
 			</div>
+		  
+			 {% endfor %}
+			 {% endif %}
 		  </div>
 	  </div>
+	  </div>
   </section>
+
+      {% sidebar_list %}
+
 
 
 {% endblock %}

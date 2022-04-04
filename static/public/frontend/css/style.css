@@ -3428,8 +3428,8 @@ input[type="button"].btn-block {
       -webkit-box-direction: normal;
       -ms-flex-direction: row;
       flex-direction: row; }
-      .navbar-expand-lg .navbar-nav .dropdown-menu {
-        position: absolute; }
+      /* .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute; } */
       .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 0.5rem;
         padding-left: 0.5rem; }
@@ -8973,3 +8973,7 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+.up{
+  background-image: url(../images/gallery-1.jpg);
+  height: 700px;
+}

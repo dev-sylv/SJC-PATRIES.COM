@@ -1,0 +1,115 @@
+{% load static %}
+<section class="ftco-menu">
+    <div class="container-fluid">
+        <div class="row d-md-flex">
+            <div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url({% static 'public/frontend/images/about.jpg' %});">
+            </div>
+            <div class="col-lg-8 ftco-animate p-md-5">
+                <div class="row">
+              <div class="col-md-12 nav-link-wrap mb-5">
+                <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Cakes</a>
+
+                  <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+
+                  <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Foods</a>
+
+                  <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Chocolate</a>
+                </div>
+              </div>
+              <div class="col-md-12 d-flex align-items-center">
+                
+                <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+                  <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                      <div class="row">
+                          {% if cake %}
+                          {% for c in cake %}
+                          <div class="col-md-4 text-center">
+                              <div class="menu-wrap">
+                                  <a href="#" class="menu-img img mb-4" style="background-image: url({{ c.get_imageC }});"></a>
+                                  <div class="text">
+                                      <h3><a href="#">{{ c.name }}</a></h3>
+                                      <p>{{ c.description }}</p>
+                                      <p class="price"><span>{{ c.price }}</span></p>
+                                      <p><a href="#" class="btn btn-white btn-outline-white">Order</a></p>
+                                  </div>
+                              </div>
+                          </div>
+                          {% endfor %}
+                          {% endif %}
+                      
+                      </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                    <div class="row">
+                          {% if drink %}
+                          {% for c in drink %}
+                          <div class="col-md-4 text-center">
+                              <div class="menu-wrap">
+                                  <a href="#" class="menu-img img mb-4" style="background-image: url({{ c.get_imageD }});"></a>
+                                  <div class="text">
+                                      <h3><a href="#">{{	c.name }}</a></h3>
+                                      <p> {{c.description }} </p>
+                                      <p class="price"><span>{{ c.price }}</span></p>
+                                      <p><a href="order.html" class="btn btn-white btn-outline-white">Order</a></p>
+                                  </div>
+                              </div>
+                          </div>
+      
+                          {% endfor %}
+                          {% endif %}
+                      </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                    <div class="row">
+                          {% if food %}
+                          {% for f in food %}
+                          <div class="col-md-4 text-center">
+                              <div class="menu-wrap">
+                                  <a href="#" class="menu-img img mb-4" style="background-image: url({{f.get_image }});"></a>
+                                  <div class="text">
+                                      <h3><a href="#">{{ f.name }}</a></h3>
+                                      <p>{{ f.description }}</p>
+                                      <p class="price"><span>{{ f.price }}</span></p>
+                                      <p><a href="#" class="btn btn-white btn-outline-white">order</a></p>
+                                  </div>
+                              </div>
+                          </div>
+                      
+                          {% endfor %}
+                          {% endif %}
+
+
+                      </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                    <div class="row">
+                          {% if chocolate %}
+                          {% for c in chocolate %}
+                          <div class="col-md-4 text-center">
+                              <div class="menu-wrap">
+                                  <a href="#" class="menu-img img mb-4" style="background-image: url({{ c.get_imageCHO }});"></a>
+                                  <div class="text">
+                                      <h3><a href="#">{{ c.name }}</a></h3>
+                                      <p> {{ c.description }}</p>
+                                      <p class="price"><span>{{ c.price }}</span></p>
+                                      <p><a href="#" class="btn btn-white btn-outline-white">Order</a></p>
+                                  </div>
+                              </div>
+                          </div>
+
+                          {% endfor %}
+                          {% endif %}
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>

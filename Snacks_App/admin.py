@@ -67,3 +67,22 @@ class SiteInfoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('site_name',)}
 
 admin.site.register(ContactMe)
+
+@admin.register(Food)
+class FoodAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Drinks)
+class DrinksAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Chocolate)
+class ChocolateAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(Cakes)
+class CakesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(ContactUs)
+

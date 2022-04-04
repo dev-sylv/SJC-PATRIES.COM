@@ -15,10 +15,16 @@ class OrderProfile(models.Model):
     profile_image = models.ImageField(blank=True, null=True, upload_to='uploads/')
     phone_number = models.CharField(max_length=15)
     address = models.TextField(max_length=500)
+    # delivery_type = models.CharField(max_length=30, verbose_name= 'Delivery Type', choices=delivery_type, default = CHOOSE)
+
+    
 
     def get_profile_image(self):
         if self.profile_image:
             return self.profile_image.url
+
+    class Meta():
+        verbose_name_plural = 'Order Profile'
 
 class Products(models.Model):
     product_name = models.CharField(max_length=50)
@@ -53,6 +59,9 @@ class Category(models.Model):
         if self.category_image:
             return self.category_image.url
 
+    class Meta():
+        verbose_name_plural = 'Category'
+
 class ProductCategory(models.Model):
     category_name = models.ForeignKey(Category, on_delete= models.CASCADE)
 
@@ -82,6 +91,13 @@ class Menu(models.Model):
     def get_snacks_image(self):
         if self.snacks_image:
             return self.snacks_image.url
+# ***************for friendly urls******
+    def get_absolute_url(self):
+        return reverse('Snacks_App:snacks_details', kwargs = {'my_slug': self.slug})
+
+    class Meta():
+        verbose_name_plural = 'Menu'
+
 
 class Orders(models.Model):
     product_id = models.ForeignKey(Products, on_delete= models.CASCADE)
@@ -167,6 +183,10 @@ class Cart(models.Model):
         if self.product_image:
             return self.product_image.url
 
+    class Meta():
+        verbose_name_plural = 'Cart'
+
+
 class Blog(models.Model):
     FEATURE = 'Feature'
     No_FEATURE ='No Feature'
@@ -216,7 +236,7 @@ class HomeSlides(models.Model):
             return self.imageA.url
 
     class Meta():
-        verbose_name_plural: 'HomeSlides'
+        verbose_name_plural = 'Home Slides'
 
 class Team(models.Model):
     image1 =  models.ImageField(blank=True, null=True, upload_to='uploads/')
@@ -231,6 +251,10 @@ class Team(models.Model):
     def get_image1(self):
         if self.image1:
             return self.image1.url
+
+    class Meta():
+        verbose_name_plural = 'Chefs'
+
 
 class Payment(models.Model):
     order_id = models.ForeignKey(Orders, on_delete= models.CASCADE)
@@ -253,11 +277,108 @@ class SiteInfo(models.Model):
 class ContactMe(models.Model):
     name =  models.CharField(max_length=100)
     email = models.EmailField()
-    # phone = models.CharField(max_length=50)
-    subject = models.CharField(max_length=2)
+    phones = models.CharField(max_length=20)
+    subject = models.CharField(max_length=100)
     # menu_id = models.ForeignKey(Menu, on_delete= models.CASCADE)
-    message = models.TextField()
+    message = models.TextField(null=True)
+    
 
     def __str__(self):
         return self.name
+
+    class Meta():
+        verbose_name_plural = 'Contact Me'
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phonenumber = models.CharField(max_length=20)
+    note = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta():
+        verbose_name_plural = 'Drop a message'
+
+
+class Food(models.Model):
+    image = models.ImageField(blank=True, null=True, upload_to='uploads/')
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+    price = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def get_image(self):
+        if self.get_image:
+            return self.image.url
+    
+    def __str__(self):
+        return self.name
+
+    class Meta():
+        verbose_name_plural = 'Food'
+
+
+class Cakes(models.Model):
+    imageC = models.ImageField(blank=True, null=True, upload_to='uploads/')
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+    price = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def get_imageC(self):
+        if self.get_imageC:
+            return self.imageC.url
+
+    def __str__(self):
+        return self.name
+
+    class Meta():
+        verbose_name_plural = 'Cakes'
+
+class Drinks(models.Model):
+    imageD = models.ImageField(blank=True, null=True, upload_to='uploads/')
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+    price = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def get_imageD(self):
+        if self.get_imageD:
+            return self.imageD.url
+
+    def __str__(self):
+        return self.name
+
+    class Meta():
+        verbose_name_plural = 'Drinks'
+
+
+class Chocolate(models.Model):
+    imageCHO = models.ImageField(blank=True, null=True, upload_to='uploads/')
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+    price = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta():
+        verbose_name_plural = 'Chocolate'
+
+
+    def get_imageCHO(self):
+        if self.get_imageCHO:
+            return self.imageCHO.url
+
 

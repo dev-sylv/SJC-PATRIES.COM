@@ -17,7 +17,7 @@ About Us Page
 
 		  <div class="col-md-7 col-sm-12 text-center ftco-animate">
 			  <h1 class="mb-3 mt-5 bread">About</h1>
-			  <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+			  <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>About</span></p>
 		  </div>
 
 		</div>
@@ -83,7 +83,9 @@ About Us Page
 		<div class="col-md-7 heading-section ftco-animate text-center">
 		  <h2 class="mb-4">Our Chef</h2>
 		  <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-		  <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+		  <p class="mt-5">
+			  Meet the wonderful team. The faces behind the delicious pastries.
+		  </p>
 		</div>
 	  </div>
 	  <div class="row">
@@ -124,36 +126,50 @@ About Us Page
   </section>
 
 	  
-	  <section class="ftco-appointment">
-		  <div class="overlay"></div>
-	  <div class="container-wrap">
-		  <div class="row no-gutters d-md-flex align-items-center">
-			  <div class="col-md-6 d-flex align-self-stretch">
-				  <div id="map"></div>
-			  </div>
-			  <div class="col-md-6 appointment ftco-animate">
-				  <h3 class="mb-3">Contact Us</h3>
-				  <form action="#" class="appointment-form">
-					  <div class="d-md-flex">
-						  <div class="form-group">
-							  <input type="text" class="form-control" placeholder="First Name">
-						  </div>
-					  </div>
-					  <div class="d-me-flex">
-						  <div class="form-group">
-							  <input type="text" class="form-control" placeholder="Last Name">
-						  </div>
-					  </div>
-					  <div class="form-group">
-				<textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
-			  </div>
-			  <div class="form-group">
-				<input type="submit" value="Send" class="btn btn-primary py-3 px-4">
-			  </div>
-				  </form>
-			  </div>    			
-		  </div>
-	  </div>
-  </section>
+     <!-- {% include 'public/frontend/myform.html' %} -->
+	 <section class="ftco-appointment">
+		<div class="overlay"></div>
+	<div class="container-wrap">
+		<div class="row no-gutters d-md-flex align-items-center">
+			<div class="col-md-6 d-flex align-self-stretch">
+				<div id="map"></div>
+			</div>
+			<div class="col-md-6 appointment ftco-animate">
+				<h3 class="mb-3">Drop A Message</h3>
+				{% if messages %}
+				{% for m in messages %}
+				<div class="alert alert-success"> {{ m }}</div>
+				{% endfor %}
+				{% endif %}
+				<form action="#" method="POST" class="appointment-form">
+	
+					<div class="d-md-flex">
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="name" placeholder="Name">
+						</div>
+					</div>
+					<div class="d-md-flex">
+						<div class="form-group">
+							<input type="text" class="form-control" name="email" placeholder="Email">
+						</div>
+					</div>
+					<div class="d-md-flex">
+						<div class="form-group">
+							<input type="text" class="form-control" name="phoneNo" placeholder="Phone Number">
+						</div>
+					</div>
+					<div class="form-group">
+			  <textarea name="" id="" cols="30" rows="3" class="form-control" name="message" placeholder="Message"></textarea>
+			</div>
+			<div class="form-group">
+			  <input type="submit" value="Send" class="btn btn-primary py-3 px-4">
+			</div>
+			{% csrf_token %}
+				</form>
+			</div>    			
+		</div>
+	</div>
+	</section>
 
 {% endblock %}

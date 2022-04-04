@@ -17,7 +17,7 @@ Contact Us Page
 
         <div class="col-md-7 col-sm-12 text-center ftco-animate">
           <h1 class="mb-3 mt-5 bread">Contact Us</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>Contact</span></p>
         </div>
 
       </div>
@@ -50,11 +50,20 @@ Contact Us Page
       <div class="col-md-1"></div>
       <div class="col-md-6 ftco-animate">
         <form action="#" method="POST" class="contact-form">
+
           {% if messages %}
           {% for m in messages %}
-          <div class="alert alert-success">{{ m }}</div>
+          {% if m.tags %}
+
+          {{ m }}
+        
+          {% endif %}
+
+          
+
           {% endfor %}
           {% endif %}
+
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -70,7 +79,7 @@ Contact Us Page
           <div class="form-group">
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" name="phone" class="form-control" placeholder="Your phone No">
+                <input type="text" name="phones" class="form-control" placeholder="Your phone No">
               </div>
             </div>
             <input type="text"  name="subject" class="form-control" placeholder="Subject">

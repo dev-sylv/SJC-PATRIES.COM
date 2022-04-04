@@ -8,170 +8,73 @@ Order Page
 
 {% block content %}
 
-
-
 <section class="home-slider owl-carousel img" style="background-image: url({% static 'public/frontend/images/bg_1.jpg' %});">
+
 	<div class="slider-item" style="background-image: url({% static 'public/frontend/images/bg_3.jpg' %});">
-		<div class="overlay"></div>
+	  <div class="overlay"></div>
 	  <div class="container">
-		<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-
+		<div class="row slider-text justify-content-center align-items-center">
+  
 		  <div class="col-md-7 col-sm-12 text-center ftco-animate">
-			  <span class="subheading">Welcome to</span>
-			<h1 class="mb-4">SUCCESS JUTONIA CAKES AND PASTRIES</h1>
-			<p class="mb-4 mb-md-5">Relishing the sweetness of life. Make sure to savor the taste. We gat you.</p>
-			<p><a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+			<h1 class="mb-3 mt-5 bread">Order Your Snacks</h1>
+			<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'Home' %}">Home</a></span> <span>Order</span></p>
 		  </div>
-
+  
 		</div>
 	  </div>
 	</div>
-	
-	<div class="slider-item">
-		<div class="overlay"></div>
-	  <div class="container">
-		<div class="row slider-text align-items-center" data-scrollax-parent="true">
+</section>
 
-		  <div class="col-md-6 col-sm-12 ftco-animate">
-			  <span class="subheading">Delicious</span>
-			<h1 class="mb-4">Meatpies</h1>
-			<p class="mb-4 mb-md-5">You are assured of our crunchy and delicious meatpies. Unique and second to none. Fresh everyday.</p>
-			<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-		  </div>
-		  <div class="col-md-6 ftco-animate">
-			  <img src="{% static 'public/frontend/images/foodweb/slide1.jpg' %}" class="img-fluid" alt="">
-		  </div>
-
+<section class="ftco-intro">
+	<div class="container-wrap">
+		<div class="wrap d-md-flex">
+			<div class="info">
+				<div class="row no-gutters">
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="icon"><span class="icon-phone"></span></div>
+						<div class="text">
+							<h3>+234 90 611 80 473</h3>
+							<p>Adimike chimnecherem Sylvia</p>
+						</div>
+					</div>
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="icon"><span class="icon-my_location"></span></div>
+						<div class="text">
+							<h3>Prince Fadina Street</h3>
+							<p>Olodi Apapa, Lagos</p>
+						</div>
+					</div>
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="icon"><span class="icon-clock-o"></span></div>
+						<div class="text">
+							<h3>Open Monday-Sunday</h3>
+							<p>7:00am - 9:00pm</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="social d-md-flex pl-md-5 p-4 align-items-center">
+		<ul class="social-icon">
+		  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+		  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+		  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+		  <li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
+		</ul>
+			</div>
 		</div>
-	  </div>
 	</div>
-
-	<div class="slider-item">
-		<div class="overlay"></div>
-	  <div class="container">
-		<div class="row slider-text align-items-center" data-scrollax-parent="true">
-
-		  <div class="col-md-6 col-sm-12 ftco-animate">
-			  <span class="subheading">Mouth Watering</span>
-			<h1 class="mb-4">Red Velvet Cakes</h1>
-			<p class="mb-4 mb-md-5">Baking the difference. Don't forget Nothing beats SJC Cakes.</p>
-			<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-		  </div>
-		  <div class="col-md-6 ftco-animate">
-			  <img src="{% static 'public/frontend/images/foodweb/slide2.png' %}" class="img-fluid" alt="">
-		  </div>
-
-		</div>
-	  </div>
-	</div>
-
-	<div class="slider-item">
-		<div class="overlay"></div>
-	  <div class="container">
-		<div class="row slider-text align-items-center" data-scrollax-parent="true">
-
-		  <div class="col-md-6 col-sm-12 order-md-last ftco-animate">
-			  <span class="subheading">Yummy</span>
-			<h1 class="mb-4">Cake Parfait</h1>
-			<p class="mb-4 mb-md-5">Available and fresh in all flavours. Unique and heavenly taste</p>
-			<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-		  </div>
-		  <div class="col-md-6 ftco-animate">
-			  <img src="{% static 'public/frontend/images/foodweb/slide3.jpg' %}" class="img-fluid" alt="">
-		  </div>
-
-		</div>
-	  </div>
-	</div>
-
-	<div class="slider-item">
-		<div class="overlay"></div>
-	  <div class="container">
-		<div class="row slider-text align-items-center" data-scrollax-parent="true">
-
-		  <div class="col-md-6 col-sm-12 ftco-animate">
-			  <span class="subheading">Delicious</span>
-			<h1 class="mb-4">Chocolate Doughnuts</h1>
-			<p class="mb-4 mb-md-5">To all our Chocolate lovers, we have you in mind. Soft and Lovely Doughnuts, don't hesistate to reach out to us.</p>
-			<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-		  </div>
-		  <div class="col-md-6 ftco-animate">
-			  <img src="{% static 'public/frontend/images/foodweb/slide4.jpg' %}" class="img-fluid" alt="">
-		  </div>
-
-		</div>
-	  </div>
-	</div>
-
-	<div class="slider-item">
-		<div class="overlay"></div>
-	  <div class="container">
-		<div class="row slider-text align-items-center" data-scrollax-parent="true">
-
-		  
-		  <div class="col-md-6 ftco-animate">
-			  <img src="{% static 'public/frontend/images/foodweb/slide0.png' %}" class="img-fluid" alt="">
-		  </div>
-
-		</div>
-	  </div>
-	</div>
-
-  </section>
-
-  <section class="ftco-intro">
-	  <div class="container-wrap">
-		  <div class="wrap d-md-flex">
-			  <div class="info">
-				  <div class="row no-gutters">
-					  <div class="col-md-4 d-flex ftco-animate">
-						  <div class="icon"><span class="icon-phone"></span></div>
-						  <div class="text">
-							  <h3>+234 90 611 80 473</h3>
-							  <p>Adimike chimnecherem Sylvia</p>
-						  </div>
-					  </div>
-					  <div class="col-md-4 d-flex ftco-animate">
-						  <div class="icon"><span class="icon-my_location"></span></div>
-						  <div class="text">
-							  <h3>Prince Fadina Street</h3>
-							  <p>Olodi Apapa, Lagos</p>
-						  </div>
-					  </div>
-					  <div class="col-md-4 d-flex ftco-animate">
-						  <div class="icon"><span class="icon-clock-o"></span></div>
-						  <div class="text">
-							  <h3>Open Monday-Sunday</h3>
-							  <p>7:00am - 9:00pm</p>
-						  </div>
-					  </div>
-				  </div>
-			  </div>
-			  <div class="social d-md-flex pl-md-5 p-4 align-items-center">
-		  <ul class="social-icon">
-			<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			<li class="ftco-animate"><a href="#"><span class="icon-whatsapp"></span></a></li>
-		  </ul>
-			  </div>
-		  </div>
-	  </div>
-  </section>
-
-
-<!-- book section -->
-<section class="book_section layout_padding">
+</section>
+<section class="book_section layout_padding text-center">
     <div class="container">
       <div class="heading_container">
-        <h2>
-          Book A Table
+        <h2 class="mt-5 mb-3">
+          Place Your Order
         </h2>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
+            <form action="" class="m-auto">
               <div>
                 <input type="text" class="form-control" placeholder="FirstName" />
               </div>
@@ -192,29 +95,42 @@ Order Page
               </div>
              
               <div class="form-group">
-                <label for="occation" class="sr-only">Occation</label>
+                <label for="occation" class="sr-only">Choice of snacks</label>
                 <select class="form-control" id="occation">
-                    <option>Select an Occasion</option>
-                  <option>Wedding Ceremony</option>
-                  <option>Birthday</option>
-                  <option>Others</option>
+                    <option>Select your snacks</option>
+                  <option>Cakes</option>
+                  <option>Sausage roll</option>
+                  <option>Cupcakes</option>
+                  <option value="">Meatpies</option>
+                  <option value="">Doughnuts</option>
+                  <option value="">Eggrolls</option>
+                  <option value="">Cakesicles</option>
+                  <option value="">Small Chops</option>
                 </select>
             </div>
 
             <div class="form-group ">
-                <label for="message" class="sr-only">Message</label>
-                <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Message"></textarea>
+                <label for="message" class="sr-only">Message(Please leave us a detailed note of your order here.Thanks in advance😊)</label>
+                <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Message(Please leave us a detailed note of your order. Thanks in advance😊)"></textarea>
             </div>
               <div>
                 <input type="date" class="form-control">
               </div>
               <div class="btn_box">
-                <button>
+                <button class="btn btn-warning mt-5 mb-5">
                   Order Now
                 </button>
               </div>
             </form>
           </div>
         </div>
+		<div class="col-md-6">
+			<img class="img-fluid" src="../../../static/public/frontend/images/foodweb/order.png" alt="">
+		</div>
+      </div>
+    </div>
+</section>
+
+
 
 {% endblock %}
