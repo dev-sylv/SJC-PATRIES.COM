@@ -2,7 +2,7 @@ asgiref==3.4.1
 certifi==2021.5.30
 cffi==1.14.0
 chardet==3.0.4
-conda==4.10.3
+conda
 conda-package-handling==1.7.0
 cryptography==2.9.2
 Django==3.1.1
