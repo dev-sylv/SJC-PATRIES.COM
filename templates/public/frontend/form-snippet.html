@@ -1,0 +1,30 @@
+{% if messages %}
+			{% for sent in messages %}
+			<div class="alert alert-success">{{ sent }}</div>
+			{% endfor %}
+			{% endif %} 
+
+           <!-- *************for hidden fields  -->
+			{% for fields in sylvia.hidden_fields %}
+			{% if fields.errors %}
+			{% for errors in fields.errors %}
+			<div class="alert alert-danger">{{ errors }}</div>
+			{% endfor %}
+			{% endif %}
+			
+			{% endfor %}
+		
+ <!-- ************for visible fields --> 
+			{% for fields in sylvia.visible_fields %}
+			{% if fields.errors %}
+			{% for errors in fields.errors %}
+			<div class="alert alert-danger">{{ errors }}</div>
+			{% endfor %}
+			{% endif %}
+            <div class="row form-group">
+				<div class="col-md-12 mb-3 mb-md-0">
+			       {{ field.label_tags }}
+				   {{ field }}
+			    </div>
+			</div>
+			{% endfor %} 

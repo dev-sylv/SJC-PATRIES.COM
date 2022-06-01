@@ -57,13 +57,27 @@ class RegisterForm(UserCreationForm):
             raise forms.ValidationError('Ooops! sorry, Email already exists')
         return email
 
-# class PlaceOrderForm(forms.ModelForm):
-#     Username
-#     Email
-#     Choice_of_snacks
-#     Date_needed
-#     Order Description
-#     Delivery method
-    
+class PlaceOrderForm(forms.ModelForm):
+    Username = forms.CharField(label = 'Your Username', widget= forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'Enter your username*'}
+    ))
 
+    Email =  forms.EmailField(widget= forms.EmailInput(
+        attrs = {'class':'form-control', 'placeholder':'Enter your email*'}
+    ))
 
+    Choice_of_snacks = forms.CharField(widget= forms.TextInput(
+        attrs = {'class':'form-control', 'placeholder':'Enter your preferred snacks*'}
+    ))
+
+    Date_needed =  forms.EmailField(widget= forms.EmailInput(
+        attrs = {'class':'form-control', 'placeholder':'what day do you need it*'}
+    ))
+
+    Order_description =  forms.CharField(widget= forms.Textarea(
+        attrs = {'class':'form-control', 'placeholder':'Elaborate your order preference here*'}
+    ))
+
+    Delivery_method = forms.CharField(widget= forms.TextInput(
+        attrs = {'class':'form-control', 'placeholder':'Enter your Preferred delivery method*'}
+    ))

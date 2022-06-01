@@ -183,3 +183,14 @@ def Myform(request):
 def User_dashboard(request):
     return render(request, 'public/frontend/user-dashboard.html')
 
+@login_required(login_url='/snacks/Login/')
+def place_order(request):
+    if request.method == 'POST':
+        order_snacks = PlaceOrderForm(request.POST, request.FILES)
+        if order_snacks.is_valid():
+            var_form = order_snacks.save(commit=FALSE)
+            var_form.user_id = request.user
+            var_form.save()
+            messages.success(request, 'Thank You For Placing An Order. Order Placed Successfully')
+    return render(request, 'public/frontend/place-order.html')
+
